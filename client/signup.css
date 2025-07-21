@@ -1,0 +1,94 @@
+/* signup.css */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4ff;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-container {
+  background-color: #ffffff;
+  border: 3px solid #004aad;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 2.5rem 3rem;
+  width: 100%;
+  max-width: 420px;
+  transition: transform 0.3s ease;
+}
+
+.signup-container:hover {
+  transform: scale(1.01);
+}
+
+.signup-container h2 {
+  text-align: center;
+  color: #004aad;
+  margin-bottom: 1.5rem;
+}
+
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"],
+.signup-container input[type="tel"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 1.2rem;
+  border: 2px solid #dce1f7;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.signup-container input:hover {
+  border-color: #004aad;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.4);
+}
+
+.signup-container input:focus {
+  border-color: #004aad;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 74, 173, 0.5);
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #004aad;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.signup-container button:hover {
+  background-color: #00398c;
+  transform: scale(1.02);
+}
+
+/* Notification messages */
+.notification {
+  margin-top: 15px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.notification.success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.notification.error {
+  background-color: #f8d7da;
+  color: #842029;
+}

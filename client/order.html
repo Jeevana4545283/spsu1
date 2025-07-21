@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SPSU Order Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Order Page -->
+  <div id="orderPage" class="main-content active">
+    <div class="container" style="margin-top: 100px;">
+      <h1 class="text-center mb-2">Hungry?</h1>
+      <h2 class="text-center mb-2">Order Food & Groceries</h2>
+
+      <!-- Category Tabs -->
+      <div class="menu-categories">
+        <div class="category-btn active" onclick="filterItems('food', this)">🍕 Canteen Food</div>
+        <div class="category-btn" onclick="filterItems('snacks', this)">🍿 Snacks</div>
+        <div class="category-btn" onclick="filterItems('grocery', this)">🛒 Groceries</div>
+        <div class="category-btn" onclick="filterItems('beverages', this)">🥤 Beverages</div>
+      </div>
+
+      <!-- Items Grid -->
+      <div class="items-grid" id="itemsGrid"></div>
+    </div>
+  </div>
+
+  <!-- 🛒 Floating Cart Toggle -->
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button onclick="toggleCart()">🛒 Cart (<span id="cartBadge">0</span>)</button>
+  </div>
+
+  <!-- 🧺 Floating Cart Panel -->
+  <div id="cart" class="cart" style="position: fixed; top: 80px; right: 20px; width: 300px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 1rem; display: none;">
+    <div class="cart-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <h3>Your Cart</h3>
+      <button onclick="toggleCart()">Close</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total" style="display: none; margin-top: 1rem;">
+      <h4>Total: ₹<span id="totalAmount">0</span></h4>
+    </div>
+
+    <div style="margin-top: 10px;">
+  <input type="text" id="customerName" placeholder="Your Name" required />
+  <input type="text" id="customerPhone" placeholder="Phone Number" required />
+  <button onclick="placeOrder()">✅ Order Now</button>
+</div>
+
+
+    <div style="margin-top: 1rem;">
+      <button onclick="window.location.href='orderConfirm.html'" style="width: 100%; background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 4px; font-weight: bold;">
+        ✅ Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- ✅ Toast Message -->
+  <div id="toast" class="toast" style="display:none;position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:5px;z-index:9999;"></div>
+
+  <!-- JavaScript -->
+  <script src="order.js"></script>
+  <script>
+    window.onload = () => {
+      loadItems(currentCategory); // currentCategory is defined in order.js
+      updateCartUI();
+    };
+  </script>
+
+</body>
+</html>

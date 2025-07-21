@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart - SPSU Food & Grocery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #5f2eea;
+    }
+
+    .cart-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cart-actions .btn {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      background-color: #5f2eea;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #4a23b8;
+    }
+
+    .empty {
+      margin-top: 20px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Your Cart</h1>
+  <div id="cart-container"></div>
+  <div class="cart-actions">
+    <a href="orderconfirm.html" class="btn btn-primary">Confirm Order ✅</a>
+
+</div>
+
+
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cart-container');
+
+      console.log("Loaded cart:", cart); // Debug check
+
+      if (!Array.isArray(cart) || cart.length === 0) {
+        container.innerHTML = `<p class="empty">Your cart is empty.</p>`;
+        return;
+      }
+
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let total = 0;
+
+      cart.forEach(item => {
+        const itemName = item.name || item.title || "Unnamed Item";
+        const itemPrice = parseFloat(item.price) || 0;
+
+        html += `
+          <tr>
+            <td>${itemName}</td>
+            <td>₹${itemPrice}</td>
+          </tr>
+        `;
+        total += itemPrice;
+      });
+
+      html += `
+          <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>₹${total}</strong></td>
+          </tr>
+        </tbody>
+        </table>
+        <br>
+        <button class="btn" onclick="clearCart()">Clear Cart</button>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    function clearCart() {
+      localStorage.removeItem('cart');
+      loadCart();
+      alert("Cart has been cleared.");
+    }
+
+    window.onload = loadCart;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPSU Food & Grocery - Campus Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">SPSU Food & Grocery</a>
+            <ul class="nav-links">
+                
+                <li><a href="order.html">Order Now</a></li>
+                <li><a href="contact.html">Contact</a></li> <!-- ✅ Corrected here -->
+                <a href="cart.html" class="cart-icon">
+                               🛒
+                <span class="cart-badge" id="cartBadge">0</span>
+                </a>
+
+                    
+                </li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            
+              <a href="signup.html" style="margin: 10px; font-weight: bold;">Signup</a>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="main-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1> Food & Grocery</h1>
+                <p>&nbsp;&nbsp;&nbsp;Our Campus Food & Essentials, Delivered Fast!</p>
+                <div class="cta-buttons">
+                    <a href="order.html" class="btn btn-primary">Order Now 🍕</a>
+
+                    <a href="contact.html" class="btn btn-primary">Contact Us 🤝</a> <!-- ✅ Uses real link -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2>Why Choose SPSU Food & Grocery?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🍽️</div>
+                        <h3>Campus Canteens</h3>
+                        <p>Order from all your favorite campus canteens and food stalls. From hot meals to quick snacks!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛒</div>
+                        <h3>Daily Groceries</h3>
+                        <p>Get essentials like snacks, toiletries, stationery, and more delivered to your hostel or classroom.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Lightning-fast campus delivery by fellow students. Most orders delivered within 15-30 minutes!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⭐</div>
+                        <h3>Student Reviews</h3>
+                        <p>See honest reviews from fellow SPSU students. Know what's trending and what's worth trying!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Student Discounts</h3>
+                        <p>Exclusive discounts, loyalty points, and special offers designed just for SPSU students and staff.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💳</div>
+                        <h3>Easy Payments</h3>
+                        <p>Pay with UPI, cards, or cash on delivery. Safe, secure, and convenient payment options.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script> <!-- Link your JavaScript file here -->
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+    <!-- Shopping Cart -->
+    <div class="cart" id="cart">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button onclick="toggleCart()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #666; padding: 2rem;">Your cart is empty</p>
+        </div>
+        <div class="cart-total" id="cartTotal" style="display: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <strong>Total: ₹<span id="totalAmount">0</span></strong>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>

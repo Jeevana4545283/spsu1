@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - SPSU Food & Grocery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="contact.js" defer></script>
+</head>
+<body>
+    <!-- Navigation (Optional if it's a full page) -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">SPSU Food & Grocery</a>
+        </div>
+    </nav>
+
+    <!-- Contact Page -->
+    <div class="main-content">
+        <div class="container">
+            <form class="contact-form" onsubmit="handleContact(event)">
+                <h2 class="text-center mb-2">Contact Us</h2>
+                <p class="text-center mb-2">Have questions? Want to become a delivery partner? Let us know!</p>
+
+                <div class="form-group">
+                    <label for="contactName">Full Name</label>
+                    <input type="text" id="contactName" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" placeholder="your.email@spsu.ac.in" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" placeholder="What's this about?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" placeholder="Tell us more..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

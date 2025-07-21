@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+    h1 { text-align: center; color: #333; }
+    .order-summary, .form-section { margin-top: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 10px; }
+    .cart-item { margin-bottom: 1rem; }
+    input { display: block; width: 100%; margin-top: 0.5rem; margin-bottom: 1rem; padding: 0.5rem; border: 1px solid #ccc; border-radius: 5px; }
+    button { background-color: green; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; }
+    button:disabled { background-color: gray; }
+    #message { margin-top: 1rem; text-align: center; 
+    color: white;}
+  </style>
+</head>
+<body>
+
+  <h1>Confirm Your Order</h1>
+
+  <div class="order-summary" id="cartSummary">
+    <h2>Cart Summary</h2>
+    <!-- JS will inject cart items here -->
+  </div>
+
+  <div class="form-section">
+    <h2>Your Details</h2>
+    <form id="confirmForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" pattern="[0-9]{10}" required>
+
+      <button type="submit">Place Order</button>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function displayCartSummary() {
+      const cartSummary = document.getElementById('cartSummary');
+      if (cart.length === 0) {
+        cartSummary.innerHTML += `<p>Your cart is empty.</p>`;
+        document.querySelector("form").style.display = "none";
+        return;
+      }
+
+      let html = cart.map(item => `
+        <div class="cart-item">
+          <strong>${item.name}</strong><br>
+          ₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      html += `<hr><p><strong>Total: ₹${total}</strong></p>`;
+
+      cartSummary.innerHTML += html;
+    }
+
+    document.getElementById('confirmForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!name || !phone || cart.length === 0) {
+        alert("Please fill in all fields and ensure your cart is not empty.");
+        return;
+      }
+
+      const orderData = {
+        customerName: name,
+        customerPhone: phone,
+        items: cart,
+        totalAmount: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+      };
+
+      try {
+        const res = await fetch('http://localhost:5000/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderData)
+        });
+
+        const result = await res.json();
+        if (res.ok) {
+          localStorage.removeItem('cart');
+          document.getElementById('message').textContent = "✅ Order placed successfully!";
+          document.getElementById('confirmForm').reset();
+        } else {
+          document.getElementById('message').textContent = `❌ Error: ${result.message || 'Something went wrong'}`;
+        }
+      } catch (err) {
+        document.getElementById('message').textContent = "❌ Network error. Try again.";
+      }
+    });
+
+    window.onload = displayCartSummary;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | SPSU Food & Grocery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links">
+        
+        <li><a href="login.html" class="login-btn">SPSU Food & Grocery</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="main-content active" style="padding: 40px;">
+    <div class="container">
+      <form class="login-form" onsubmit="handleLogin(event)">
+        <h2>Welcome Back!</h2>
+        <p>Login to your SPSU account</p>
+        
+        <div class="form-group">
+          <label for="loginEmail">SPSU Email</label>
+          <input type="email" id="loginEmail" placeholder="your.name@spsu.ac.in" required />
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
